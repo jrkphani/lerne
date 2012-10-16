@@ -8,5 +8,8 @@ class Answer_model extends CI_Model {
 		$query = $this->db->get('answers');
 		return $query->result();
 	}
+	function add($params){
+		return $this->db->insert('answers',$params);
+	}
 }
 ?>

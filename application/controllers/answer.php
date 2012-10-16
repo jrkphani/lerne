@@ -17,14 +17,29 @@ class Answer extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function get($qid)
-	{
+	public function get($qid){
 		$res = array();
 		$this->load->model('answer_model','',TRUE);
 		$params = array('qid'=>$qid);
 		$res['resultset'] = $this->answer_model->search($params);
 		$this->load->view('json',$res);
-	//	echo 'hello world';
+	}
+	public function add(){
+		$this->load->model('answer_model','',TRUE);
+        $params = array(
+            'answer_text'=>'from CI',
+            'question_id'=>'1',
+            'creator'=>'1',
+            'created'=>time(),
+            'votes' => '0',
+        );
+        $res;
+        if($this->answer_model->add($params)){
+            $res = true;
+        }else{
+            $res = false;
+        }
+        $this->load->view('json',array('resultset'=>$res));
 	}
 }
 
