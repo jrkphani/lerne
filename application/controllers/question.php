@@ -17,9 +17,13 @@ class Question extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function get($subject)
 	{
-		$this->load->view('question_list');
+		$res = array();
+		$this->load->model('question_model','',TRUE);
+		$params = array('subject'=>$subject);
+		$res['resultset'] = $this->question_model->search($params);
+		$this->load->view('json',$res);
 	//	echo 'hello world';
 	}
 }
