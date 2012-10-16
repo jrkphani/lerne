@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Question extends CI_Controller {
+class Answer extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -17,31 +17,29 @@ class Question extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function get($subject)
-	{
+	public function get($qid){
 		$res = array();
-		$this->load->model('question_model','',TRUE);
-		$params = array('subject'=>$subject);
-		$res['resultset'] = $this->question_model->search($params);
+		$this->load->model('answer_model','',TRUE);
+		$params = array('qid'=>$qid);
+		$res['resultset'] = $this->answer_model->search($params);
 		$this->load->view('json',$res);
-	//	echo 'hello world';
 	}
 	public function add(){
-		$this->load->model('question_model','',TRUE);
-		$params = array(
-			'question_text'=>'from CI',
-			'subject'=>'math',
-			'creator'=>'1',
-			'created'=>time(),
-			'tags' => '',
-		);	
-		$res;
-		if($this->question_model->add($params)){
-			$res = true;
-		}else{
-			$res = false;
-		}		
-		$this->load->view('json',array('resultset'=>$res));
+		$this->load->model('answer_model','',TRUE);
+        $params = array(
+            'answer_text'=>'from CI',
+            'question_id'=>'1',
+            'creator'=>'1',
+            'created'=>time(),
+            'votes' => '0',
+        );
+        $res;
+        if($this->answer_model->add($params)){
+            $res = true;
+        }else{
+            $res = false;
+        }
+        $this->load->view('json',array('resultset'=>$res));
 	}
 }
 
