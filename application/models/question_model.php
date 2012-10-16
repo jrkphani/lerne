@@ -11,5 +11,8 @@ class Question_model extends CI_Model {
 		$query = $this->db->get('questions');
 		return $query->result();
 	}
+	function add($params){
+		return $this->db->insert('questions',$params);
+	}
 }
 ?>

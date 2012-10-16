@@ -26,6 +26,23 @@ class Question extends CI_Controller {
 		$this->load->view('json',$res);
 	//	echo 'hello world';
 	}
+	public function add(){
+		$this->load->model('question_model','',TRUE);
+		$params = array(
+			'question_text'=>'from CI',
+			'subject'=>'math',
+			'creator'=>'1',
+			'created'=>time(),
+			'tags' => '',
+		);	
+		$res;
+		if($this->question_model->add($params)){
+			$res = true;
+		}else{
+			$res = false;
+		}		
+		$this->load->view('json',array('resultset'=>$res));
+	}
 }
 
 /* End of file welcome.php */
