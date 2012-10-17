@@ -14,7 +14,9 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost:8888/codeigniter/';
+//Enter a base url like /path/to/codeigniter/directory
+//
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
