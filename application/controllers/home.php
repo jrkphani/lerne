@@ -5,6 +5,7 @@ class Home extends CI_Controller {
   function __construct()
   {
     parent::__construct();
+    $this->load->helper('url');
   }
 
   function index()
@@ -19,7 +20,6 @@ class Home extends CI_Controller {
     else
     {
       //If no session, redirect to login page
-      $this->load->helper('url'); 
       redirect('login', 'refresh');
 	}
   }
@@ -28,7 +28,6 @@ class Home extends CI_Controller {
   {
     $this->session->unset_userdata('logged_in');
     session_destroy();
-    $this->load->helper('url'); 
     redirect('home', 'refresh');
   }
 

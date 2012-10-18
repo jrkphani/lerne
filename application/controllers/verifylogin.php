@@ -6,6 +6,7 @@ class VerifyLogin extends CI_Controller {
   {
     parent::__construct();
     $this->load->model('user','',TRUE);
+    $this->load->helper('url');
   }
 
   function index()
@@ -24,7 +25,6 @@ class VerifyLogin extends CI_Controller {
     else
     {
       //Go to private area
-      $this->load->helper('url'); 
       redirect('home', 'refresh');
     }
     
