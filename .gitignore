@@ -10,3 +10,4 @@ database.php
 *.so*
 *.diff
 *~
+config.php
