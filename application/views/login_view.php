@@ -12,6 +12,6 @@
       <input type="password" size="20" id="passowrd" name="password" placeholder="Password"/>
       <br/>
       <input type="submit" value="Login"/>
-    </form>
+    <?php echo form_close(); ?>
   </body>
 </html>
