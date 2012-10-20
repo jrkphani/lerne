@@ -16,7 +16,7 @@ function Answer(){
 		var text = $('#lr_add_answer_text').val();//Y.Lang.trim(Y.one('#ls_add_question_text').get('value'));
 		var questionid = $('#lr_question_id').val();
 		var postdata = "action=add&text="+text+"&questionid="+questionid;
-  var url = LrConstants.approot+"ws/answers_ws.php";
+		var url = "answer/add";
 		$.ajax({
 			url: url,
 			type:'POST',

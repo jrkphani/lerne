@@ -123,7 +123,6 @@ function Question(){
 		});
 		};
 	var listAnswers = function(data){
-		var url = "ws/answers_ws.php";
 		var questionid = '';
 		var incrementCount = 0;
 		if(data.qid){
@@ -133,10 +132,11 @@ function Question(){
 			questionid = $(this).attr('questionid');
 		}
 		var elementId = $(this).attr('id');
-		var data = "action=list&questionid="+questionid;
+		//var data = "action=list&questionid="+questionid;
+		var url = "answer/get/"+questionid;
 		$("#lr_question_answers_"+questionid).html('Loading...');
 		var callback = function(data) {
-			var answerlist = data;
+			var answerlist = data.data;
 			var finalListItems ='';
 			$("#lr_question_answers_"+questionid).html('');
 			if(answerlist.length){
@@ -180,14 +180,13 @@ function Question(){
 		url: url,
 		type: 'GET',
 		dataType:'json',
-		data: data,
 		error:function(e){console.log(e);},
 		success:callback
 		});
 	};	
 	var addAnswer = function(data){
         var postdata = "action=add&text="+data.answerText+"&questionid="+data.qid;
-		var url = "ws/answers_ws.php";
+		var url = "answer/add";
 		var qid = data.qid;
         $.ajax({
             url: url,
