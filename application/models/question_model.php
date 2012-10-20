@@ -14,5 +14,16 @@ class Question_model extends CI_Model {
 	function add($params){
 		return $this->db->insert('questions',$params);
 	}
+	function getUserQuestions($params){
+		$userid = $params['userid'];
+		$userQuestions = $this->db->get_where('questions',array('creator'=>$userid));
+		return $userQuestions->result();
+	}
+	function getInfo($params){
+		$qid = $params['qid'];
+		$this->db->where('id',$qid);
+		$rs = $this->db->get('questions');
+		return $rs->result();
+	}
 }
 ?>
