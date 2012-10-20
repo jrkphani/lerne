@@ -73,7 +73,7 @@ function Question(){
 	//					}
 	//				}
 					var answercount = questionlist[i].answer_count;
-					var voteupcount = questionlist[i].votecountup;
+					var voteupcount = Math.abs(questionlist[i].votecountup);
 					var votedowncount = Math.abs(questionlist[i].votecountdown);
 					var defaultVoteUpClass = "lr_question_voteup_link badge badge-default";
 					var defaultVoteDownClass = "lr_question_votedown_link badge badge-default";
@@ -223,7 +223,7 @@ function Question(){
 		$(this).html('<img src="view/img/loader-small.gif"/>');
 		var qid = $(this).attr('questionid');
         var postdata = "action=vote&voteup="+voteType+"&questionid="+qid+"&type="+postDataVoteType;
-		var url = "ws/questions_ws.php";
+		var url = "vote/add";
         $.ajax({
             url: url,
             type:'POST',

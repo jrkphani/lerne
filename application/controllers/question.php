@@ -28,15 +28,29 @@ class Question extends CI_Controller {
 		$rs_obj = $this->question_model->search($params);
 		$resultset = array();
 		$this->load->model('answer_model','',TRUE);
+		$this->load->model('vote_model','',TRUE);
 		foreach($rs_obj as $result){
 			$ans_params = array('qid'=>$result->id);
 			$ans_count = count($this->answer_model->search($ans_params));
 			$result->answer_count = $ans_count;
+
+			$vote_params = array('componentid'=>$result->id,'type'=>'question');
+			$vote_count = $this->vote_model->countVotes($vote_params);
+			$result->votecountup = $vote_count['votecountup'];
+			$result->votecountdown = $vote_count['votecountdown'];
+
+			$vote_user_params = array('componentid'=>$result->id,'userid'=>1,'type'=>'question');
+			$vote_user = $this->vote_model->getVote($vote_user_params);
+			$result->votetype = 0;
+			$result->voted = 0;
+			if($vote_user){
+				$result->voted = 1;
+				$result->votetype = $vote_user[0]->votes;
+			}
+
 			array_push($res['resultset'],$result);
-			
 		}
 		$this->load->view('json',$res);
-	//	echo 'hello world';
 	}
 	public function add(){
 		$this->load->model('question_model','',TRUE);
