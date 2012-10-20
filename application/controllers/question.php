@@ -19,18 +19,30 @@ class Question extends CI_Controller {
 	 */
 	public function get($subject)
 	{
+		ini_set('display_errors','0');
 		$res = array();
 		$this->load->model('question_model','',TRUE);
 		$params = array('subject'=>$subject);
-		$res['resultset'] = $this->question_model->search($params);
+#		$res['resultset'] = $this->question_model->search($params);
+		$res['resultset'] = array();
+		$rs_obj = $this->question_model->search($params);
+		$resultset = array();
+		$this->load->model('answer_model','',TRUE);
+		foreach($rs_obj as $result){
+			$ans_params = array('qid'=>$result->id);
+			$ans_count = count($this->answer_model->search($ans_params));
+			$result->answer_count = $ans_count;
+			array_push($res['resultset'],$result);
+			
+		}
 		$this->load->view('json',$res);
 	//	echo 'hello world';
 	}
 	public function add(){
 		$this->load->model('question_model','',TRUE);
 		$params = array(
-			'question_text'=>'from CI',
-			'subject'=>'math',
+			'question_text'=>$_POST['text'],
+			'subject'=>$_POST['subject'],
 			'creator'=>'1',
 			'created'=>time(),
 			'tags' => '',

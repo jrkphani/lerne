@@ -15,7 +15,15 @@ class Home extends CI_Controller {
       $session_data = $this->session->userdata('logged_in');
       $data['email'] = $session_data['email'];
       $data['firstname'] = $session_data['firstname'];
+	  $data['subject_list'] = array('math'=>'Math',
+        'chemistry'=>'Chemistry',
+        'physics'=>'Physics',
+        'technology'=>'Technology',
+        'computerProgramming'=>'Computer Programming'
+		);
+      $this->load->view('header_view', $data);
       $this->load->view('home_view', $data);
+      $this->load->view('footer_view', $data);
     }
     else
     {

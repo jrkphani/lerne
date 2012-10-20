@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
-</head>
-<body>
-
 <div id="container">
 	<h1>Welcome to CodeIgniter!</h1>
 	<div id="body">
@@ -23,5 +15,3 @@
 	<p class="footer">Page raaaaendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>
 <script type="text/javascript" src="<?php echo asset_url(); ?>js/jquery-1.8.1.min.js"></script>
-</body>
-</html>
