@@ -2,7 +2,8 @@
 <h2>Welcome <?php echo $firstname; ?>!</h2>
 <a href="home/logout">Logout</a>
 <?php
-	print_r($_SESSION);
+	echo "<pre>";
+	print_r($this->session->userdata['logged_in']);
 ?>
 <div id="lr_content" class="content">
 	<div class="row" style="margin-bottom:10px;">

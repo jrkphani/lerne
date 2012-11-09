@@ -7,7 +7,7 @@
     
     <?php echo validation_errors(); ?>
     <?php echo form_open('verifylogin'); ?>
-      <input type="text" size="20" id="email" name="email" placeholder="Email"/>
+      <input type="text" size="20" id="email" name="email" value = "<?php echo set_value('email'); ?>" placeholder="Email"/>
       <br/>
       <input type="password" size="20" id="passowrd" name="password" placeholder="Password"/>
       <br/>
