@@ -1,11 +1,6 @@
-<h1>Home</h1>
-<h2>Welcome <?php echo $firstname; ?>!</h2>
-<a href="home/logout">Logout</a>
-<?php
-	echo "<pre>";
-	print_r($this->session->userdata['logged_in']);
-?>
-<div id="lr_content" class="content">
+<div class="span2">
+</div>
+<div id="lr_content" class="span10">
 	<div class="row" style="margin-bottom:10px;">
 		<div id="lr_subject_list" class="dropdown" style="float:left;">
 			<a id="lr_user_subscriptions" class="btn dropdown-toggle" data-toggle="dropdown" href="#" role="button">My Subjects <span class="caret"></span></a>
