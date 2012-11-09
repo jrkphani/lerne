@@ -21,20 +21,12 @@
 </div>
 <div id="lr_content" class="span8">
 	<div style="margin-bottom:10px;">
-		<div style="float:right;">
-			<a href="#lrAddQuestionForm" role="button" class="btn" data-toggle="modal" id="lr_add_question">Ask a question</a>
-			<div class="modal hide fade" id="lrAddQuestionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-					<h3 id="myModalLabel">Ask a question</h3>
-				</div>
-				<div class="modal-body">
-				<textarea id="ls_add_question_text"  class="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" cols="54" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>
-				</div>
-				<div class="modal-footer form-actions">
+		<div>
+			<!--<a href="#lrAddQuestionForm" role="button" class="btn" data-toggle="modal" id="lr_add_question">Ask a question</a>-->
+			<div>
+					<!--<textarea id="ls_add_question_text"  class="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" cols="54" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>-->
+					<textarea rows="30" id="ls_add_question_text" placeholder="Got a question?" style="display:block;"></textarea>
 					<button id="ls_add_question_submit" class="btn btn-primary" data-loading-text="Posting...">Ask!</button>
-					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-				</div>
 			</div>
 		</div>
 		<div style="clear:both"></div>

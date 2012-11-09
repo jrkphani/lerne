@@ -15,7 +15,7 @@ function Question(){
 	var addQuestion = function(){
 		var subjectName;
 		$('#lr_subject_list ul li').each(function(index,value){
-			if($(value).hasClass('selected')){
+			if($(value).hasClass('active')){
 				subjectName = $(value).attr('id');	
 			}
 		});
