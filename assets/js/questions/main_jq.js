@@ -39,17 +39,17 @@ function Question(){
 		var subjectName;
 		if($(this).hasClass('lr_subject_list_item')){
 			$('#lr_subject_list ul li').each(function(index,value){
-				if($(value).hasClass('selected')){
-					$(value).removeClass('selected')
+				if($(value).hasClass('active')){
+					$(value).removeClass('active')
 				}
 			});
-			$(this).addClass('selected');
+			$(this).addClass('active');
 			subjectName = $(this).attr('id');
 			subjectTitle = $(this).html();
 			$('#lr_user_subscriptions').html(subjectTitle);
 		}else{
 			$('#lr_subject_list ul li').each(function(index,value){
-				if($(value).hasClass('selected')){
+				if($(value).hasClass('active')){
 					subjectName = $(value).attr('id');	
 					subjectTitle = $(this).html();
 					$('#lr_user_subscriptions').html(subjectTitle);
@@ -88,9 +88,9 @@ function Question(){
 							}
 						} 
 					}
-					var listitem = '<div class="row">'+
-					'<div class="span10">'+
-					'<li class="card well"><div class="lr_user_image"></div>'+
+					var listitem = '<div class="">'+
+					'<div class="">'+
+					'<li class="well card"><div class="lr_user_image"></div>'+
 					'<div class="lr_question_text" id="lr_question_text_'+qid+'">'+
 					questionlist[i].question_text+'</div>'+
 					'<div class="clear:both"></div>'+

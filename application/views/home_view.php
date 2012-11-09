@@ -1,18 +1,14 @@
-<div class="container">
-<div class="row">
-<div class="span2">
-</div>
-<div id="lr_content" class="span10">
-	<div class="row" style="margin-bottom:10px;">
-		<div id="lr_subject_list" class="dropdown" style="float:left;">
-			<a id="lr_user_subscriptions" class="btn dropdown-toggle" data-toggle="dropdown" href="#" role="button">My Subjects <span class="caret"></span></a>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+<div class = "container">
+<div class="span3">
+	<div id="lr_subject_list" class="row" style="float:left;">
+			<!--<a id="lr_user_subscriptions" class="btn dropdown-toggle" data-toggle="dropdown" href="#" role="button">My Subjects <span class="caret"></span></a>-->
+			<ul class="nav nav-pills nav-stacked" role="menu" aria-labelledby="dLabel">
 			<?php
 				$i=0;
 				$class;
 				foreach($subject_list as $subject => $value){
 					if($i==0){
-						$class='selected';
+						$class='active';
 					}else{
 						$class='';
 					}
@@ -22,6 +18,9 @@
 			?>
 			</ul>
 		</div>
+</div>
+<div id="lr_content" class="span8">
+	<div style="margin-bottom:10px;">
 		<div style="float:right;">
 			<a href="#lrAddQuestionForm" role="button" class="btn" data-toggle="modal" id="lr_add_question">Ask a question</a>
 			<div class="modal hide fade" id="lrAddQuestionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -63,8 +62,7 @@
 		</div>
 	</div>
 </div>
-</div><!--end of row-->
-</div><!--end of container-->
+</div>
 <script type="text/javascript" src="<?php echo asset_url(); ?>js/jquery-1.8.1.min.js"></script>
 <script type="text/javascript" src="<?php echo asset_url();?>js/questions/main_jq.js"></script>
 <script type="text/javascript" src="<?php echo asset_url();?>js/bootstrap.min.js"></script>
