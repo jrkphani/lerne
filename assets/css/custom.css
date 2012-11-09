@@ -228,3 +228,9 @@ question/index.php
 	height:14px;
 	width:14px;
 }
+.card{
+	box-shadow:2px 2px 5px #EEE;
+	-moz-box-shadow:2px 2px 5px #eee;
+	-o-box-shadow:2px 2px 5px #eee;
+	border-radius:0px;
+}

@@ -90,7 +90,7 @@ function Question(){
 					}
 					var listitem = '<div class="row">'+
 					'<div class="span10">'+
-					'<li class="lr_question_list_content"><div class="lr_user_image"></div>'+
+					'<li class="card well"><div class="lr_user_image"></div>'+
 					'<div class="lr_question_text" id="lr_question_text_'+qid+'">'+
 					questionlist[i].question_text+'</div>'+
 					'<div class="clear:both"></div>'+
