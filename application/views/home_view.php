@@ -39,7 +39,6 @@
 		<div style="clear:both"></div>
 		<div class="ls_sub_content row">
 			<div id="ls_list_questions" class="ls_list_questions">
-				<div class="title" style="width:100%;">Recent Questions</div>
 				<ul style="margin-left:0px;">
 					Loading Questions...
 				</ul>
