@@ -1,3 +1,5 @@
+<div class="container">
+<div class="row">
 <div class="span2">
 </div>
 <div id="lr_content" class="span10">
@@ -61,6 +63,8 @@
 		</div>
 	</div>
 </div>
+</div><!--end of row-->
+</div><!--end of container-->
 <script type="text/javascript" src="<?php echo asset_url(); ?>js/jquery-1.8.1.min.js"></script>
 <script type="text/javascript" src="<?php echo asset_url();?>js/questions/main_jq.js"></script>
 <script type="text/javascript" src="<?php echo asset_url();?>js/bootstrap.min.js"></script>
