@@ -56,6 +56,27 @@ body{
 	border-bottom:1px solid #5A5858;
 }
 textarea{
+	border:0;
+	resize:none;
+	background:transparent;
+	outline:0;
+}
+#ls_add_question_text{
+	width:98%;
+	height:100%;
+}
+.main-textarea-post{
+	padding:6px 0px 4px 0px;
+}
+textarea:focus{
+	border:0;
+	outline:0;
+}
+.textarea{
+	border:1px solid #BDC7D8;
+}
+/*
+textarea{
 	height:32px;
 	border:1px solid #999999;
 	outline:none;
@@ -66,6 +87,10 @@ textarea{
 .textarea:focus{
 	height:64px;
 }
+.textarea-focused{
+	height: 64px;
+}
+*/
 .textbox{
 	border:1px solid #999999;
 	outline:none;
@@ -76,7 +101,7 @@ select{
 	border:1px solid #999999;
 	font-size:16px;
 }
-textarea:focus, .textbox:focus, select:focus{
+.textbox:focus, select:focus{
 	border:1px solid #CD4900;
 	box-shadow:0 0 5px #CD4900;
     -moz-box-shadow:0 0 5px #CD4900;
@@ -118,9 +143,6 @@ textarea:focus, .textbox:focus, select:focus{
 .form{
 	padding:6px;
 	margin:10px 0px 10px 0px;
-}
-.textarea-focused{
-	height: 64px;
 }
 .float-left{
 	float:left;

@@ -1,4 +1,5 @@
 <div class = "container">
+<div class="row">
 <div class="span3">
 	<div id="lr_subject_list" class="row" style="float:left;">
 			<!--<a id="lr_user_subscriptions" class="btn dropdown-toggle" data-toggle="dropdown" href="#" role="button">My Subjects <span class="caret"></span></a>-->
@@ -21,12 +22,14 @@
 </div>
 <div id="lr_content" class="span8">
 	<div style="margin-bottom:10px;">
-		<div>
+		<div class="row">
 			<!--<a href="#lrAddQuestionForm" role="button" class="btn" data-toggle="modal" id="lr_add_question">Ask a question</a>-->
-			<div>
+			<div class="textarea">
 					<!--<textarea id="ls_add_question_text"  class="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" cols="54" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>-->
-					<textarea rows="30" id="ls_add_question_text" placeholder="Got a question?" style="display:block;"></textarea>
-					<button id="ls_add_question_submit" class="btn btn-primary" data-loading-text="Posting...">Ask!</button>
+					<textarea id="ls_add_question_text" placeholder="Got a question?" style="display:block;"></textarea>
+			</div>
+			<div class="main-textarea-post">
+					<button id="ls_add_question_submit" class="btn btn-primary btn-small" data-loading-text="Posting...">Ask!</button>
 			</div>
 		</div>
 		<div style="clear:both"></div>
@@ -55,6 +58,7 @@
 	</div>
 </div>
 </div>
+</div>
 <script type="text/javascript" src="<?php echo asset_url(); ?>js/jquery-1.8.1.min.js"></script>
 <script type="text/javascript" src="<?php echo asset_url();?>js/questions/main_jq.js"></script>
 <script type="text/javascript" src="<?php echo asset_url();?>js/bootstrap.min.js"></script>
@@ -63,7 +67,6 @@ $(document).ready(function(){
     var question = new Question();
     question.init();
     var d = new Date();
-    $('#ls_add_question_text').attr('value','Got a question?');
     //$('#lrAddQuestionForm').modal({show:false});
 });
 </script>

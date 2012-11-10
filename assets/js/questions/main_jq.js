@@ -242,6 +242,7 @@ function Question(){
     };
 	return {
 		init: function(){
+			enableSubmit();
 			listQuestions();
 			$('#ls_add_question_text').keyup(enableSubmit);
 			$('#ls_add_question_submit').click(addQuestion);
