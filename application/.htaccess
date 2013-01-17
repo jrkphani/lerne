@@ -1,4 +1,6 @@
-ReWriteEngine on
-ReWriteCond %{REQUEST_FILENAME} !-f
-ReWriteCond %{REQUEST_FILENAME} !-d
-ReWriteRule .* index.php/$0 [PT,L]
+deny from all
+
+#ReWriteEngine on
+#ReWriteCond %{REQUEST_FILENAME} !-f
+#ReWriteCond %{REQUEST_FILENAME} !-d
+#ReWriteRule .* index.php/$0 [PT,L]
