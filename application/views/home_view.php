@@ -48,7 +48,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="alert alert-info" id="lr_modal_question_text"></div>
-				<textarea id="lr_add_answer_text" class="ls_add_question_text">Write your answer here...</textarea>
+				<textarea id="lr_add_answer_text" placeholder='Write your answer here...' class="ls_add_question_text"></textarea>
 			</div>
 			<div class="modal-footer form-actions">
 				<button id="lr_add_answer_submit" class="btn btn-primary" data-loading-text="Posting..." qid="0">Post</button>
@@ -62,6 +62,7 @@
 <script type="text/javascript" src="<?php echo asset_url(); ?>js/jquery-1.8.1.min.js"></script>
 <script type="text/javascript" src="<?php echo asset_url();?>js/questions/main_jq.js"></script>
 <script type="text/javascript" src="<?php echo asset_url();?>js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo asset_url();?>js/placeholder_fallback.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     var question = new Question();
