@@ -141,7 +141,7 @@ function Question(){
 			$("#lr_question_answers_"+questionid).html('');
 			if(answerlist.length){
 				for(var i=0;i< answerlist.length;i++){
-					var voteupcount = answerlist[i].votecountup;
+					var voteupcount = Math.abs(answerlist[i].votecountup);
 					var votedowncount = Math.abs(answerlist[i].votecountdown);
 					var defaultVoteUpClass = "lr_answer_voteup_link badge badge-default";
 					var defaultVoteDownClass = "lr_answer_votedown_link badge badge-default";

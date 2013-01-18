@@ -32,11 +32,15 @@ class Vote extends CI_Controller {
 			'creator'=>'1',
 			'created'=>time(),
 		);	
-		$res;
+		$res=array();
 		if($this->vote_model->add($params)){
-			$res = true;
+			/* Author - Mani
+			 * to get vote counts
+			 */
+			//$res=$this->vote_model->countVotes($params);
+			$res['success'] = true;
 		}else{
-			$res = false;
+			$res['success'] = false;
 		}		
 		$this->load->view('json',array('resultset'=>$res));
 	}
