@@ -136,16 +136,23 @@ function Question(){
 		var url = "answer/get/"+questionid;
 		$("#lr_question_answers_"+questionid).html('Loading...');
 		var callback = function(data) {
-			var answerlist = data.data;
+			var answerlist = data.data.data;
 			var finalListItems ='';
 			$("#lr_question_answers_"+questionid).html('');
+			var defaultVoteUpClass = "lr_answer_voteup_link badge badge-default";
+			var defaultVoteDownClass = "lr_answer_votedown_link badge badge-default";
+			var voted =data.data.voted;
+			if(voted)
+					{
+						//i.e, diable vote option for all answer's under this question
+						var voted_id =data.data.voted_id;
+						var votetype =data.data.votetype;
+					}
 			if(answerlist.length){
 				for(var i=0;i< answerlist.length;i++){
 					var voteupcount = Math.abs(answerlist[i].votecountup);
 					var votedowncount = Math.abs(answerlist[i].votecountdown);
-					var defaultVoteUpClass = "lr_answer_voteup_link badge badge-default";
-					var defaultVoteDownClass = "lr_answer_votedown_link badge badge-default";
-					if(answerlist[i].voted){
+					/*if(answerlist[i].voted){
 						if(answerlist[i].votetype < 0 || answerlist[i].votetype > 0){
 							if(answerlist[i].votetype < 0){
 								defaultVoteUpClass = "badge badge-default";
@@ -155,8 +162,25 @@ function Question(){
 								defaultVoteDownClass = "badge badge-default";
 							}
 						} 
-					}
+					}*/
 					var aid = answerlist[i].id;
+					if(voted)
+					{
+						defaultVoteUpClass = "badge badge-default";
+						defaultVoteDownClass = "badge badge-default";
+						if(aid == voted_id)
+						{
+							//show this answer is voted
+							if(votetype>0)
+							{
+								defaultVoteUpClass = "badge badge-success";
+							}
+							else
+							{
+								defaultVoteDownClass="badge badge-important";
+							}
+						}
+					} 
 					var listitem = '<li class="lr_question_list_content"><div class="lr_user_image"></div><div class="lr_question_text">'+answerlist[i].answer_text+'</div>'+
 					'<span id="lr_answer_voteup_link_'+aid+'" questionid="'+aid+'" class="'+defaultVoteUpClass+'" value="'+voteupcount+'">'+
 					voteupcount+' <i class="icon-thumbs-up"></i></span>'+
