@@ -24,11 +24,12 @@ class Vote extends CI_Controller {
 	}
 
 	function is_logged_in(){
-	$is_logged_in = $this->session->userdata('is_logged_in');
+	$is_logged_in = $this->session->userdata('logged_in');
 	if(!isset($is_logged_in) || $is_logged_in != TRUE){
-		//$data['body_content'] = 'unauth_error_view';
-		//$this->load->view('template', $data);
-		//exit;
+		$data['body_content'] = 'unauth_error_view';
+		$this->load->helper('url');
+		$this->load->view('template', $data);
+		exit;
 		}
 	}
 	public function add(){

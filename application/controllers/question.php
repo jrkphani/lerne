@@ -17,6 +17,20 @@ class Question extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	  public function __construct(){
+	parent::__construct();
+	$this->is_logged_in();
+	}
+
+	function is_logged_in(){
+	$is_logged_in = $this->session->userdata('logged_in');
+	if(!isset($is_logged_in) || $is_logged_in != TRUE){
+		$data['body_content'] = 'unauth_error_view';
+		$this->load->helper('url');
+		$this->load->view('template', $data);
+		exit;
+		}
+	}
 	public function get($subject)
 	{
 		ini_set('display_errors','0');
