@@ -47,7 +47,26 @@ Class User_model extends CI_Model
   $this->db->set('user_created','NOW()',false);
   $this->db->insert('users',$data);
  }
- 
+ function get_user_detail($userid=NULL)
+ {
+	 if($userid)
+	 {
+	 }
+	 else
+	 {
+		 //get logged in user details
+		 session_start();
+		 if($this->session->userdata('logged_in'))
+			{
+			  $data = $this->session->userdata('logged_in');
+			}
+			else
+			{
+			return false;
+			}
+	 }
+	 return $data;
+ }
 }
 
 ?>

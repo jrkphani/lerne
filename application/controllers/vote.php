@@ -17,7 +17,24 @@ class Vote extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	 
+	 public function __construct(){
+	parent::__construct();
+	$this->is_logged_in();
+	}
+
+	function is_logged_in(){
+	$is_logged_in = $this->session->userdata('is_logged_in');
+	if(!isset($is_logged_in) || $is_logged_in != TRUE){
+		//$data['body_content'] = 'unauth_error_view';
+		//$this->load->view('template', $data);
+		//exit;
+		}
+	}
 	public function add(){
+		$this->load->model('user_model');
+		$user_details = $this->user_model->get_user_detail();
+		
 		$this->load->model('vote_model','',TRUE);
 		$vote = 0;
         if($_POST['voteup']){
@@ -28,8 +45,8 @@ class Vote extends CI_Controller {
 		$params = array(
 			'votes'=>$vote,
 			'componentid'=>$_POST['questionid'],
+			'creator'=>$user_details['id'],
 			'type' => $_POST['type'],
-			'creator'=>'1',
 			'created'=>time(),
 		);	
 		$res=array();

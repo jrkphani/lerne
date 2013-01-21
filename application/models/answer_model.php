@@ -3,12 +3,15 @@ class Answer_model extends CI_Model {
     function __construct(){
         parent::__construct();
     }
-	function search($params){
+	function search($params,$type=NULL){
 		$this->db->like('question_id',$params['qid']);
 		/* Author mani
 		 * to get the voteup and votedown counts
 		 */
+		 if($type='answer')
+		 {
 		$this->db->select("answers.*,(SELECT SUM(votes.votes) FROM votes WHERE votes.componentid=answers.id AND votes.votes>0) AS votecountup,(SELECT SUM(votes.votes) FROM votes WHERE votes.componentid=answers.id AND votes.votes<0) AS votecountdown");
+		}
 		$query = $this->db->get('answers');
 		return $query->result();
 	}

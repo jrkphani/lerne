@@ -22,6 +22,8 @@ class Question extends CI_Controller {
 		ini_set('display_errors','0');
 		$res = array();
 		$this->load->model('question_model','',TRUE);
+		$this->load->model('user_model');
+		$user_details = $this->user_model->get_user_detail();
 		$params = array('subject'=>$subject);
 #		$res['resultset'] = $this->question_model->search($params);
 		$res['resultset'] = array();
@@ -39,7 +41,7 @@ class Question extends CI_Controller {
 			$result->votecountup = $vote_count['votecountup'];
 			$result->votecountdown = $vote_count['votecountdown'];
 
-			$vote_user_params = array('componentid'=>$result->id,'userid'=>1,'type'=>'question');
+			$vote_user_params = array('componentid'=>$result->id,'userid'=>$user_details['id'],'type'=>'question');
 			$vote_user = $this->vote_model->getVote($vote_user_params);
 			$result->votetype = 0;
 			$result->voted = 0;

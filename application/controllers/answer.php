@@ -17,11 +17,41 @@ class Answer extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	 public function __construct(){
+	parent::__construct();
+	$this->is_logged_in();
+	}
+
+	function is_logged_in(){
+	$is_logged_in = $this->session->userdata('is_logged_in');
+	if(!isset($is_logged_in) || $is_logged_in != TRUE){
+		//$data['body_content'] = 'unauth_error_view';
+		//$this->load->view('template', $data);
+		//exit;
+		}
+	}
 	public function get($qid){
 		$res = array();
+		$res['resultset']['voted']=0;
 		$this->load->model('answer_model','',TRUE);
 		$params = array('qid'=>$qid);
-		$res['resultset'] = $this->answer_model->search($params);
+		$resultset = $this->answer_model->search($params,'answer');
+		$this->load->model('user_model');
+		$user_details = $this->user_model->get_user_detail();
+		$this->load->model('vote_model','',TRUE);
+		foreach($resultset as $result)
+		{
+			$vote_user_params = array('componentid'=>$result->id,'userid'=>$user_details['id'],'type'=>'answer');
+			$vote_user = $this->vote_model->getVote($vote_user_params);
+			if($vote_user)
+			{
+				$res['resultset']['voted']=1;
+				$res['resultset']['voted_id']=$result->id;
+				$res['resultset']['votetype'] = $vote_user[0]->votes;
+				break;
+			}		
+		}
+		$res['resultset']['data']=$resultset;
 		$this->load->view('json',$res);
 	}
 	public function add(){
